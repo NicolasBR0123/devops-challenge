@@ -1,0 +1,16 @@
+version: '3'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      - SERVICES=s3,dynamodb
+      - DEFAULT_REGION=sa-east-1
+      - EDGE_PORT=4566
+    ports:
+      - '4566:4566'
+      - '4571:4571'
+    volumes:
+      - "./localstack-data:/var/lib/localstack"
+    mem_limit: 5g
+    cpu_count: 3
+
